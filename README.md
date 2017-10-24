@@ -14,7 +14,7 @@ gem install readable_enums
 Include the ReadableEnums module in the models you want to use it in, or in your base model.
 
 ```
-class ModelName << ActiveRecord::Base
+class ModelName < ActiveRecord::Base
   include ReadableEnums
 
 end
