@@ -4,7 +4,9 @@ Create string attributes that behave like rails enums
 
 ## Getting Started
 
-TODO
+```
+gem install readable_enums
+```
 
 
 ## Usage
