@@ -52,3 +52,16 @@ ReadableEnums gives you enum-like methods and validations!
 > model.errors.first
 => [:status, "ending is not a valid status"]
 ```
+
+It also accepts optional arguments.
+```
+  readable_enums :status, [:active, :inactive, :pending], allow_nil: true, if: :validate?
+
+  def validate?
+    ...
+  end
+```
+
+`allow_nil: true` will allow the string attribute to be nil
+
+`if: :method` will only validate the string attribute if `method` returns true
