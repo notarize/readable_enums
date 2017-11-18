@@ -3,7 +3,7 @@
 We love pull requests from everyone. By participating in this project, you
 agree to abide by the Notarize [code of conduct].
 
-[code of conduct]: https://notarize-os.github.io/code-of-conudct
+[code of conduct]: https://notarize-os.github.io/code-of-conduct
 
 Here are some ways *you* can contribute:
 
