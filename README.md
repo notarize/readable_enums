@@ -62,7 +62,7 @@ ReadableEnums gives you enum-like methods and validations!
   readable_enums :status, [:active, :inactive, :pending], allow_nil: true
 ```
 
-`if`: only validate the string attribute if `method` returns true
+`if`: only validate the string attribute if the conditional returns true
 
 ```
   readable_enums :status, [:active, :inactive, :pending], if: :validate?
