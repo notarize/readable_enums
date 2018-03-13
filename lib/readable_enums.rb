@@ -10,7 +10,7 @@ module ReadableEnums
       values.each do |enum|
         define_method(:"#{enum}?") { send(name.to_s) == enum }
         define_method(:"#{enum}!") { update(name.to_s => enum) }
-        define_singleton_method(:"#{enum}") { where(name.to_s => enum) }
+        define_singleton_method(:"#{enum}") { where(name.to_s => enum) } unless args[:with_scopes] == false
       end
     end
   end

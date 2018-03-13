@@ -53,15 +53,29 @@ ReadableEnums gives you enum-like methods and validations!
 => [:status, "ending is not a valid status"]
 ```
 
-It also accepts optional arguments.
+
+## Optional Arguments
+
+`allow_nil`: allow nil values in your enum column
+
 ```
-  readable_enums :status, [:active, :inactive, :pending], allow_nil: true, if: :validate?
+  readable_enums :status, [:active, :inactive, :pending], allow_nil: true
+```
+
+`if`: only validate the string attribute if the conditional returns true
+
+```
+  readable_enums :status, [:active, :inactive, :pending], if: :validate?
 
   def validate?
     ...
   end
 ```
 
-`allow_nil: true` will allow the string attribute to be nil
+`with_scopes`: prevent scopes from being setup for your enum values if you don't need them, or want to define them yourself
 
-`if: :method` will only validate the string attribute if `method` returns true
+```
+  readable_enums :status, [:active, :inactive, :pending], with_scopes: false
+
+  scope :active, -> { where(status: :active).sort_by(&:created_at) }
+```
