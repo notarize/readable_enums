@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name        = 'readable_enums'
-  s.version     = '1.2.1'
-  s.date        = '2018-03-13'
+  s.version     = '1.2.2'
+  s.date        = '2018-03-14'
   s.summary     = 'Create readable enums in your database!'
   s.description = 'Validation and helper methods for string based enums in rails'
   s.authors     = ['Tyler Karuzis', 'Raynor Kuang', 'Austin Fisher']
