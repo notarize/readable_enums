@@ -56,13 +56,13 @@ ReadableEnums gives you enum-like methods and validations!
 
 ## Optional Arguments
 
-`allow_nil`: allow nil values in your enum column
+`allow_nil (default false)`: allow nil values in your enum column
 
 ```
   readable_enums :status, [:active, :inactive, :pending], allow_nil: true
 ```
 
-`if`: only validate the string attribute if the conditional returns true
+`if (default true)`: only validate the string attribute if the conditional returns true
 
 ```
   readable_enums :status, [:active, :inactive, :pending], if: :validate?
@@ -72,7 +72,7 @@ ReadableEnums gives you enum-like methods and validations!
   end
 ```
 
-`with_scopes`: prevent scopes from being setup for your enum values if you don't need them, or want to define them yourself
+`with_scopes (default true)`: prevent scopes from being setup for your enum values if you don't need them, or want to define them yourself
 
 ```
   readable_enums :status, [:active, :inactive, :pending], with_scopes: false
