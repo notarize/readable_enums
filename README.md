@@ -141,3 +141,14 @@ When any other value is provided, that value will be added to the end of each ge
   def active_example!
   def inactive_example?
 ```
+
+#### combinations
+If you have a use case for it, `prefix` and `suffix` can be utilized together. 
+```
+  readable_enums :status, [:active, :inactive, :pending], prefix: true, suffix: :example
+
+  # creates method names such as
+  def status_active_example?
+  def status_active_example!
+  def status_inactive_example?
+```
