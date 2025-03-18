@@ -23,7 +23,7 @@ end
 Add enum-like behavior to any existing string attribute by using the readable_enums method.
 
 ```
-  readable_enums :status, [:active, :inactive, :pending]
+readable_enums :status, [:active, :inactive, :pending]
 ```
 
 ReadableEnums gives you enum-like methods and validations!
@@ -56,26 +56,97 @@ ReadableEnums gives you enum-like methods and validations!
 
 ## Optional Arguments
 
+#### allow_nil
 `allow_nil (default false)`: allow nil values in your enum column
 
 ```
-  readable_enums :status, [:active, :inactive, :pending], allow_nil: true
+readable_enums :status, [:active, :inactive, :pending], allow_nil: true
 ```
 
+#### if
 `if (default true)`: only validate the string attribute if the conditional returns true
 
 ```
-  readable_enums :status, [:active, :inactive, :pending], if: :validate?
+readable_enums :status, [:active, :inactive, :pending], if: :validate?
 
-  def validate?
-    ...
-  end
+def validate?
+  ...
+end
 ```
 
+#### with_scopes
 `with_scopes (default true)`: prevent scopes from being setup for your enum values if you don't need them, or want to define them yourself
 
 ```
-  readable_enums :status, [:active, :inactive, :pending], with_scopes: false
+readable_enums :status, [:active, :inactive, :pending], with_scopes: false
 
-  scope :active, -> { where(status: :active).sort_by(&:created_at) }
+scope :active, -> { where(status: :active).sort_by(&:created_at) }
+```
+
+#### with_methods
+`with_methods (default true)`: prevent methods from being setup for your enum values if you don't need them or want to define them yourself
+
+```
+readable_enums :status, [:active, :inactive, :pending], with_methods: false
+
+def active?
+  status == 'active'
+end
+```
+
+#### prefix
+`prefix (default nil)`: add a prefix to all generated method names
+
+When `true` is provided, the enums name will be added to the beginning of each generated method's name
+```
+readable_enums :status, [:active, :inactive, :pending], prefix: true
+
+# creates method names such as
+def status_active?
+def status_active!
+def status_inactive?
+```
+
+When any other value is provided, that value will be added to the beginning of each generated method's name
+```
+readable_enums :status, [:active, :inactive, :pending], prefix: :example
+
+# creates method names such as
+def example_active?
+def example_active!
+def example_inactive?
+```
+
+#### suffix
+`suffix (default nil)`: add a suffix to all generated method names
+
+When `true` is provided, the enums name will be added to the end of each generated method's name
+```
+readable_enums :status, [:active, :inactive, :pending], suffix: true
+
+# creates method names such as
+def active_status?
+def active_status!
+def inactive_status?
+```
+
+When any other value is provided, that value will be added to the end of each generated method's name
+```
+readable_enums :status, [:active, :inactive, :pending], suffix: :example
+
+# creates method names such as
+def active_example?
+def active_example!
+def inactive_example?
+```
+
+#### combinations
+If you have a use case for it, `prefix` and `suffix` can be utilized together. 
+```
+readable_enums :status, [:active, :inactive, :pending], prefix: true, suffix: :example
+
+# creates method names such as
+def status_active_example?
+def status_active_example!
+def status_inactive_example?
 ```
